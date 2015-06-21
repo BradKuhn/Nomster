@@ -46,7 +46,6 @@ class PlacesController < ApplicationController
 		verify_correct_user
 
 		@place.destroy
-		redirect_to root_path
 	end
 
 	private
