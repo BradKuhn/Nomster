@@ -5,10 +5,8 @@ class ApplicationController < ActionController::Base
 
 
 	def verify_correct_user
-		respond_to do |format|
- 			format.html { redirect_to root_url, alert: "You cannot access that part of the website." }
- 			format.xml { head :forbidden }
- 			format.json { head :forbidden }
+		if @place.user != current_user
+		  return render :text => 'Not Allowed', :status => :forbidden
 		end
 	end
 end

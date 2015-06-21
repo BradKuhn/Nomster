@@ -25,14 +25,13 @@ class PlacesController < ApplicationController
 	end
 	
 	def edit
-		@place = Place.find(params[:id])
+	  @place = Place.find(params[:id])
 
-		verify_correct_user
+	  verify_correct_user
 	end
 
 	def update
 		@place = Place.find(params[:id])
-
 		verify_correct_user
 
 		@place.update_attributes(place_params)
@@ -48,6 +47,7 @@ class PlacesController < ApplicationController
 		verify_correct_user
 
 		@place.destroy
+		redirect_to root_path
 	end
 
 	private
