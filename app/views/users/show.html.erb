@@ -13,20 +13,24 @@
 <br /><br />
 <h1 class="text-center">My Comments</h1>
 <br /><br />
-<% @user.comments.each do |comment| %>
-	<div class="col-xs-12 col-sm-6">
-  	  <blockquote>
-      <h2 class="text-center"><%= link_to comment.place.name, place_path(comment.place) %></h2>
-  	  	<div class="text-center"><i><%= comment.created_at.strftime("%B %d, %Y") %></i><br /></div>
-    	<% if comment.humanized_rating.present? %>
-      		<b><%= comment.humanized_rating %></b> -
-    	<% end %>
-    	<%= comment.message %>
-    	<small><%= comment.user.email %></small>
-      <%= link_to 'Delete', [comment.place, comment], method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, :class => 'btn btn-danger pull-right' %>
-      <div class="clear"></div>
-  	  </blockquote>
-	</div>
+<% if @user.comments.present? %>
+  <% @user.comments.each do |comment| %>
+  	<div class="col-xs-12 col-sm-6">
+    	  <blockquote>
+        <h2 class="text-center"><%= link_to comment.place.name, place_path(comment.place) %></h2>
+    	  	<div class="text-center"><i><%= comment.created_at.strftime("%B %d, %Y") %></i><br /></div>
+      	<% if comment.humanized_rating.present? %>
+        		<b><%= comment.humanized_rating %></b> -
+      	<% end %>
+      	<%= comment.message %>
+      	<small><%= comment.user.email %></small>
+        <%= link_to 'Delete', [comment.place, comment], method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, :class => 'btn btn-danger pull-right' %>
+        <div class="clear"></div>
+    	  </blockquote>
+  	</div>
+  <% end %>
+  <% else %>
+  <div class="text-center">You don't have any comments!</div>
 <% end %>
 
 <div class="clear"></div>
