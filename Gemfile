@@ -60,6 +60,13 @@ gem "fog", "~> 1.3.1"
 gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
 gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
 
+
+# include Pry
+group :development, :test do
+  gem 'pry-byebug'
+  gem 'pry-rails'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
